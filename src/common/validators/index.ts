@@ -1,0 +1,33 @@
+// src/common/validators/index.ts
+
+import { ArrayValidator } from 'src/common/validators/array.validator';
+import { BooleanValidator } from 'src/common/validators/boolean.validator';
+import { CepValidator } from 'src/common/validators/cep.validator';
+import { CuidValidator } from 'src/common/validators/cuid.validator';
+import { DateValidator } from 'src/common/validators/date.validator';
+import { EmailValidator } from 'src/common/validators/email.validator';
+import { EnumValidator } from 'src/common/validators/enum.validator';
+import { FloatValidator } from 'src/common/validators/float.validator';
+import { NumberValidator } from 'src/common/validators/number.validator';
+import { PhoneValidator } from 'src/common/validators/phone.validator';
+import { StringValidator } from 'src/common/validators/string.validator';
+import { NestedValidator } from './nested.validator';
+import { CNPJValidator } from './cnpj.validator';
+import { CPFValidator } from './cpf.validator';
+
+export {
+  ArrayValidator,
+  BooleanValidator,
+  NestedValidator,
+  CepValidator,
+  CuidValidator,
+  DateValidator,
+  EmailValidator,
+  EnumValidator,
+  FloatValidator,
+  NumberValidator,
+  PhoneValidator,
+  StringValidator,
+  CNPJValidator,
+  CPFValidator
+};
