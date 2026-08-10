@@ -9,18 +9,28 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "build": "nest build",
+    "postinstall": "npm run prisma:generate",
+    "build": "npx nest build",
+    "postbuild": "ls dist/src/main.js || echo BUILD_FAILED",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:debug": "lsof -ti:3001 | xargs kill -9 2>/dev/null || true && npx nest start --watch",
+    "start:prod": "node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org smart-church-platform --project dogao-do-pastor-erp-backend ./dist && sentry-cli sourcemaps upload --org smart-church-platform --project dogao-do-pastor-erp-backend ./dist",
+    "prisma:generate": "npx prisma generate",
+    "prisma:reset": "npx prisma migrate reset",
+    "prisma:seed": "npx prisma db seed",
+    "prisma:dev": "npm run prisma:reset && npm run prisma:seed",
+    "prisma:migrate:dev": "npx prisma migrate dev",
+    "prisma:migrate:prod": "npx prisma migrate deploy",
+    "close-ports": "lsof -ti:3001 | xargs kill -9 2>/dev/null || true"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.1",
