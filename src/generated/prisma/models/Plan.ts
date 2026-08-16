@@ -300,8 +300,8 @@ export type PlanWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Plan"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Plan"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Plan"> | Date | string | null
-  planCompanies?: Prisma.PlanCompanyListRelationFilter
-  companyInvoices?: Prisma.CompanyInvoiceListRelationFilter
+  companies?: Prisma.PlanCompanyListRelationFilter
+  invoices?: Prisma.CompanyInvoiceListRelationFilter
 }
 
 export type PlanOrderByWithRelationInput = {
@@ -318,8 +318,8 @@ export type PlanOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  planCompanies?: Prisma.PlanCompanyOrderByRelationAggregateInput
-  companyInvoices?: Prisma.CompanyInvoiceOrderByRelationAggregateInput
+  companies?: Prisma.PlanCompanyOrderByRelationAggregateInput
+  invoices?: Prisma.CompanyInvoiceOrderByRelationAggregateInput
   _relevance?: Prisma.PlanOrderByRelevanceInput
 }
 
@@ -340,8 +340,8 @@ export type PlanWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Plan"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Plan"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Plan"> | Date | string | null
-  planCompanies?: Prisma.PlanCompanyListRelationFilter
-  companyInvoices?: Prisma.CompanyInvoiceListRelationFilter
+  companies?: Prisma.PlanCompanyListRelationFilter
+  invoices?: Prisma.CompanyInvoiceListRelationFilter
 }, "id" | "name">
 
 export type PlanOrderByWithAggregationInput = {
@@ -398,8 +398,8 @@ export type PlanCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  planCompanies?: Prisma.PlanCompanyCreateNestedManyWithoutPlanInput
-  companyInvoices?: Prisma.CompanyInvoiceCreateNestedManyWithoutPlanInput
+  companies?: Prisma.PlanCompanyCreateNestedManyWithoutPlanInput
+  invoices?: Prisma.CompanyInvoiceCreateNestedManyWithoutPlanInput
 }
 
 export type PlanUncheckedCreateInput = {
@@ -416,8 +416,8 @@ export type PlanUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  planCompanies?: Prisma.PlanCompanyUncheckedCreateNestedManyWithoutPlanInput
-  companyInvoices?: Prisma.CompanyInvoiceUncheckedCreateNestedManyWithoutPlanInput
+  companies?: Prisma.PlanCompanyUncheckedCreateNestedManyWithoutPlanInput
+  invoices?: Prisma.CompanyInvoiceUncheckedCreateNestedManyWithoutPlanInput
 }
 
 export type PlanUpdateInput = {
@@ -434,8 +434,8 @@ export type PlanUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planCompanies?: Prisma.PlanCompanyUpdateManyWithoutPlanNestedInput
-  companyInvoices?: Prisma.CompanyInvoiceUpdateManyWithoutPlanNestedInput
+  companies?: Prisma.PlanCompanyUpdateManyWithoutPlanNestedInput
+  invoices?: Prisma.CompanyInvoiceUpdateManyWithoutPlanNestedInput
 }
 
 export type PlanUncheckedUpdateInput = {
@@ -452,8 +452,8 @@ export type PlanUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planCompanies?: Prisma.PlanCompanyUncheckedUpdateManyWithoutPlanNestedInput
-  companyInvoices?: Prisma.CompanyInvoiceUncheckedUpdateManyWithoutPlanNestedInput
+  companies?: Prisma.PlanCompanyUncheckedUpdateManyWithoutPlanNestedInput
+  invoices?: Prisma.CompanyInvoiceUncheckedUpdateManyWithoutPlanNestedInput
 }
 
 export type PlanCreateManyInput = {
@@ -601,35 +601,35 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type PlanCreateNestedOneWithoutPlanCompaniesInput = {
-  create?: Prisma.XOR<Prisma.PlanCreateWithoutPlanCompaniesInput, Prisma.PlanUncheckedCreateWithoutPlanCompaniesInput>
-  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutPlanCompaniesInput
+export type PlanCreateNestedOneWithoutCompaniesInput = {
+  create?: Prisma.XOR<Prisma.PlanCreateWithoutCompaniesInput, Prisma.PlanUncheckedCreateWithoutCompaniesInput>
+  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutCompaniesInput
   connect?: Prisma.PlanWhereUniqueInput
 }
 
-export type PlanUpdateOneRequiredWithoutPlanCompaniesNestedInput = {
-  create?: Prisma.XOR<Prisma.PlanCreateWithoutPlanCompaniesInput, Prisma.PlanUncheckedCreateWithoutPlanCompaniesInput>
-  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutPlanCompaniesInput
-  upsert?: Prisma.PlanUpsertWithoutPlanCompaniesInput
+export type PlanUpdateOneRequiredWithoutCompaniesNestedInput = {
+  create?: Prisma.XOR<Prisma.PlanCreateWithoutCompaniesInput, Prisma.PlanUncheckedCreateWithoutCompaniesInput>
+  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutCompaniesInput
+  upsert?: Prisma.PlanUpsertWithoutCompaniesInput
   connect?: Prisma.PlanWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PlanUpdateToOneWithWhereWithoutPlanCompaniesInput, Prisma.PlanUpdateWithoutPlanCompaniesInput>, Prisma.PlanUncheckedUpdateWithoutPlanCompaniesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PlanUpdateToOneWithWhereWithoutCompaniesInput, Prisma.PlanUpdateWithoutCompaniesInput>, Prisma.PlanUncheckedUpdateWithoutCompaniesInput>
 }
 
-export type PlanCreateNestedOneWithoutCompanyInvoicesInput = {
-  create?: Prisma.XOR<Prisma.PlanCreateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedCreateWithoutCompanyInvoicesInput>
-  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutCompanyInvoicesInput
+export type PlanCreateNestedOneWithoutInvoicesInput = {
+  create?: Prisma.XOR<Prisma.PlanCreateWithoutInvoicesInput, Prisma.PlanUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutInvoicesInput
   connect?: Prisma.PlanWhereUniqueInput
 }
 
-export type PlanUpdateOneRequiredWithoutCompanyInvoicesNestedInput = {
-  create?: Prisma.XOR<Prisma.PlanCreateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedCreateWithoutCompanyInvoicesInput>
-  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutCompanyInvoicesInput
-  upsert?: Prisma.PlanUpsertWithoutCompanyInvoicesInput
+export type PlanUpdateOneRequiredWithoutInvoicesNestedInput = {
+  create?: Prisma.XOR<Prisma.PlanCreateWithoutInvoicesInput, Prisma.PlanUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.PlanCreateOrConnectWithoutInvoicesInput
+  upsert?: Prisma.PlanUpsertWithoutInvoicesInput
   connect?: Prisma.PlanWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PlanUpdateToOneWithWhereWithoutCompanyInvoicesInput, Prisma.PlanUpdateWithoutCompanyInvoicesInput>, Prisma.PlanUncheckedUpdateWithoutCompanyInvoicesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PlanUpdateToOneWithWhereWithoutInvoicesInput, Prisma.PlanUpdateWithoutInvoicesInput>, Prisma.PlanUncheckedUpdateWithoutInvoicesInput>
 }
 
-export type PlanCreateWithoutPlanCompaniesInput = {
+export type PlanCreateWithoutCompaniesInput = {
   id?: string
   name: string
   description?: string | null
@@ -643,10 +643,10 @@ export type PlanCreateWithoutPlanCompaniesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  companyInvoices?: Prisma.CompanyInvoiceCreateNestedManyWithoutPlanInput
+  invoices?: Prisma.CompanyInvoiceCreateNestedManyWithoutPlanInput
 }
 
-export type PlanUncheckedCreateWithoutPlanCompaniesInput = {
+export type PlanUncheckedCreateWithoutCompaniesInput = {
   id?: string
   name: string
   description?: string | null
@@ -660,26 +660,26 @@ export type PlanUncheckedCreateWithoutPlanCompaniesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  companyInvoices?: Prisma.CompanyInvoiceUncheckedCreateNestedManyWithoutPlanInput
+  invoices?: Prisma.CompanyInvoiceUncheckedCreateNestedManyWithoutPlanInput
 }
 
-export type PlanCreateOrConnectWithoutPlanCompaniesInput = {
+export type PlanCreateOrConnectWithoutCompaniesInput = {
   where: Prisma.PlanWhereUniqueInput
-  create: Prisma.XOR<Prisma.PlanCreateWithoutPlanCompaniesInput, Prisma.PlanUncheckedCreateWithoutPlanCompaniesInput>
+  create: Prisma.XOR<Prisma.PlanCreateWithoutCompaniesInput, Prisma.PlanUncheckedCreateWithoutCompaniesInput>
 }
 
-export type PlanUpsertWithoutPlanCompaniesInput = {
-  update: Prisma.XOR<Prisma.PlanUpdateWithoutPlanCompaniesInput, Prisma.PlanUncheckedUpdateWithoutPlanCompaniesInput>
-  create: Prisma.XOR<Prisma.PlanCreateWithoutPlanCompaniesInput, Prisma.PlanUncheckedCreateWithoutPlanCompaniesInput>
+export type PlanUpsertWithoutCompaniesInput = {
+  update: Prisma.XOR<Prisma.PlanUpdateWithoutCompaniesInput, Prisma.PlanUncheckedUpdateWithoutCompaniesInput>
+  create: Prisma.XOR<Prisma.PlanCreateWithoutCompaniesInput, Prisma.PlanUncheckedCreateWithoutCompaniesInput>
   where?: Prisma.PlanWhereInput
 }
 
-export type PlanUpdateToOneWithWhereWithoutPlanCompaniesInput = {
+export type PlanUpdateToOneWithWhereWithoutCompaniesInput = {
   where?: Prisma.PlanWhereInput
-  data: Prisma.XOR<Prisma.PlanUpdateWithoutPlanCompaniesInput, Prisma.PlanUncheckedUpdateWithoutPlanCompaniesInput>
+  data: Prisma.XOR<Prisma.PlanUpdateWithoutCompaniesInput, Prisma.PlanUncheckedUpdateWithoutCompaniesInput>
 }
 
-export type PlanUpdateWithoutPlanCompaniesInput = {
+export type PlanUpdateWithoutCompaniesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -693,10 +693,10 @@ export type PlanUpdateWithoutPlanCompaniesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  companyInvoices?: Prisma.CompanyInvoiceUpdateManyWithoutPlanNestedInput
+  invoices?: Prisma.CompanyInvoiceUpdateManyWithoutPlanNestedInput
 }
 
-export type PlanUncheckedUpdateWithoutPlanCompaniesInput = {
+export type PlanUncheckedUpdateWithoutCompaniesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -710,10 +710,10 @@ export type PlanUncheckedUpdateWithoutPlanCompaniesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  companyInvoices?: Prisma.CompanyInvoiceUncheckedUpdateManyWithoutPlanNestedInput
+  invoices?: Prisma.CompanyInvoiceUncheckedUpdateManyWithoutPlanNestedInput
 }
 
-export type PlanCreateWithoutCompanyInvoicesInput = {
+export type PlanCreateWithoutInvoicesInput = {
   id?: string
   name: string
   description?: string | null
@@ -727,10 +727,10 @@ export type PlanCreateWithoutCompanyInvoicesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  planCompanies?: Prisma.PlanCompanyCreateNestedManyWithoutPlanInput
+  companies?: Prisma.PlanCompanyCreateNestedManyWithoutPlanInput
 }
 
-export type PlanUncheckedCreateWithoutCompanyInvoicesInput = {
+export type PlanUncheckedCreateWithoutInvoicesInput = {
   id?: string
   name: string
   description?: string | null
@@ -744,26 +744,26 @@ export type PlanUncheckedCreateWithoutCompanyInvoicesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  planCompanies?: Prisma.PlanCompanyUncheckedCreateNestedManyWithoutPlanInput
+  companies?: Prisma.PlanCompanyUncheckedCreateNestedManyWithoutPlanInput
 }
 
-export type PlanCreateOrConnectWithoutCompanyInvoicesInput = {
+export type PlanCreateOrConnectWithoutInvoicesInput = {
   where: Prisma.PlanWhereUniqueInput
-  create: Prisma.XOR<Prisma.PlanCreateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedCreateWithoutCompanyInvoicesInput>
+  create: Prisma.XOR<Prisma.PlanCreateWithoutInvoicesInput, Prisma.PlanUncheckedCreateWithoutInvoicesInput>
 }
 
-export type PlanUpsertWithoutCompanyInvoicesInput = {
-  update: Prisma.XOR<Prisma.PlanUpdateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedUpdateWithoutCompanyInvoicesInput>
-  create: Prisma.XOR<Prisma.PlanCreateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedCreateWithoutCompanyInvoicesInput>
+export type PlanUpsertWithoutInvoicesInput = {
+  update: Prisma.XOR<Prisma.PlanUpdateWithoutInvoicesInput, Prisma.PlanUncheckedUpdateWithoutInvoicesInput>
+  create: Prisma.XOR<Prisma.PlanCreateWithoutInvoicesInput, Prisma.PlanUncheckedCreateWithoutInvoicesInput>
   where?: Prisma.PlanWhereInput
 }
 
-export type PlanUpdateToOneWithWhereWithoutCompanyInvoicesInput = {
+export type PlanUpdateToOneWithWhereWithoutInvoicesInput = {
   where?: Prisma.PlanWhereInput
-  data: Prisma.XOR<Prisma.PlanUpdateWithoutCompanyInvoicesInput, Prisma.PlanUncheckedUpdateWithoutCompanyInvoicesInput>
+  data: Prisma.XOR<Prisma.PlanUpdateWithoutInvoicesInput, Prisma.PlanUncheckedUpdateWithoutInvoicesInput>
 }
 
-export type PlanUpdateWithoutCompanyInvoicesInput = {
+export type PlanUpdateWithoutInvoicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -777,10 +777,10 @@ export type PlanUpdateWithoutCompanyInvoicesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planCompanies?: Prisma.PlanCompanyUpdateManyWithoutPlanNestedInput
+  companies?: Prisma.PlanCompanyUpdateManyWithoutPlanNestedInput
 }
 
-export type PlanUncheckedUpdateWithoutCompanyInvoicesInput = {
+export type PlanUncheckedUpdateWithoutInvoicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -794,7 +794,7 @@ export type PlanUncheckedUpdateWithoutCompanyInvoicesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planCompanies?: Prisma.PlanCompanyUncheckedUpdateManyWithoutPlanNestedInput
+  companies?: Prisma.PlanCompanyUncheckedUpdateManyWithoutPlanNestedInput
 }
 
 
@@ -803,13 +803,13 @@ export type PlanUncheckedUpdateWithoutCompanyInvoicesInput = {
  */
 
 export type PlanCountOutputType = {
-  planCompanies: number
-  companyInvoices: number
+  companies: number
+  invoices: number
 }
 
 export type PlanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  planCompanies?: boolean | PlanCountOutputTypeCountPlanCompaniesArgs
-  companyInvoices?: boolean | PlanCountOutputTypeCountCompanyInvoicesArgs
+  companies?: boolean | PlanCountOutputTypeCountCompaniesArgs
+  invoices?: boolean | PlanCountOutputTypeCountInvoicesArgs
 }
 
 /**
@@ -825,14 +825,14 @@ export type PlanCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * PlanCountOutputType without action
  */
-export type PlanCountOutputTypeCountPlanCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PlanCountOutputTypeCountCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PlanCompanyWhereInput
 }
 
 /**
  * PlanCountOutputType without action
  */
-export type PlanCountOutputTypeCountCompanyInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PlanCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CompanyInvoiceWhereInput
 }
 
@@ -851,8 +851,8 @@ export type PlanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  planCompanies?: boolean | Prisma.Plan$planCompaniesArgs<ExtArgs>
-  companyInvoices?: boolean | Prisma.Plan$companyInvoicesArgs<ExtArgs>
+  companies?: boolean | Prisma.Plan$companiesArgs<ExtArgs>
+  invoices?: boolean | Prisma.Plan$invoicesArgs<ExtArgs>
   _count?: boolean | Prisma.PlanCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["plan"]>
 
@@ -906,8 +906,8 @@ export type PlanSelectScalar = {
 
 export type PlanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "month" | "biannual" | "annual" | "maxUsers" | "maxBudgetsMonth" | "maxDevices" | "active" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["plan"]>
 export type PlanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  planCompanies?: boolean | Prisma.Plan$planCompaniesArgs<ExtArgs>
-  companyInvoices?: boolean | Prisma.Plan$companyInvoicesArgs<ExtArgs>
+  companies?: boolean | Prisma.Plan$companiesArgs<ExtArgs>
+  invoices?: boolean | Prisma.Plan$invoicesArgs<ExtArgs>
   _count?: boolean | Prisma.PlanCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PlanIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -916,8 +916,8 @@ export type PlanIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $PlanPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Plan"
   objects: {
-    planCompanies: Prisma.$PlanCompanyPayload<ExtArgs>[]
-    companyInvoices: Prisma.$CompanyInvoicePayload<ExtArgs>[]
+    companies: Prisma.$PlanCompanyPayload<ExtArgs>[]
+    invoices: Prisma.$CompanyInvoicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1327,8 +1327,8 @@ readonly fields: PlanFieldRefs;
  */
 export interface Prisma__PlanClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  planCompanies<T extends Prisma.Plan$planCompaniesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Plan$planCompaniesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlanCompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  companyInvoices<T extends Prisma.Plan$companyInvoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Plan$companyInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyInvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  companies<T extends Prisma.Plan$companiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Plan$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlanCompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invoices<T extends Prisma.Plan$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Plan$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyInvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1764,9 +1764,9 @@ export type PlanDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Plan.planCompanies
+ * Plan.companies
  */
-export type Plan$planCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Plan$companiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the PlanCompany
    */
@@ -1788,9 +1788,9 @@ export type Plan$planCompaniesArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Plan.companyInvoices
+ * Plan.invoices
  */
-export type Plan$companyInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Plan$invoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the CompanyInvoice
    */

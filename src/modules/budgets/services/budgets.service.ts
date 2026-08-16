@@ -41,7 +41,18 @@ export class BudgetsService {
           totalValue: dto.totalValue,
           status,
           approved: dto.approved ?? false,
+          budgetItems: dto.items && dto.items.length > 0 ? {
+            create: dto.items.map((item) => ({
+              companyId: dto.companyId,
+              name: item.name,
+              value: item.value,
+              serviceName: item.serviceName || item.name,
+              serviceValue: item.serviceValue ?? item.value,
+              suggestValue: item.suggestValue ?? item.value,
+            })),
+          } : undefined,
         },
+        include: { budgetItems: true, budgetPayments: true, budgetStatusHistories: true },
       });
 
       // Registrar o histórico de status inicial
@@ -58,28 +69,45 @@ export class BudgetsService {
       return b;
     });
 
-    return new BudgetEntity(budget as unknown as Partial<BudgetEntity>);
+    return new BudgetEntity({
+      ...budget,
+      items: budget.budgetItems,
+      payments: budget.budgetPayments,
+      statusHistory: budget.budgetStatusHistories,
+    } as unknown as Partial<BudgetEntity>);
   }
 
   async findAllByCompany(companyId: string): Promise<BudgetEntity[]> {
     const budgets = await this.prisma.budget.findMany({
       where: { companyId, active: true, deletedAt: null },
+      include: { budgetItems: true, budgetPayments: true, budgetStatusHistories: true },
       orderBy: { code: 'desc' },
     });
 
-    return budgets.map((b) => new BudgetEntity(b as unknown as Partial<BudgetEntity>));
+    return budgets.map((b) => new BudgetEntity({
+      ...b,
+      items: b.budgetItems,
+      payments: b.budgetPayments,
+      statusHistory: b.budgetStatusHistories,
+    } as unknown as Partial<BudgetEntity>));
   }
 
   async findById(id: string): Promise<BudgetEntity> {
     const budget = await this.prisma.budget.findFirst({
       where: { id, deletedAt: null },
+      include: { budgetItems: true, budgetPayments: true, budgetStatusHistories: true },
     });
 
     if (!budget) {
       throw new NotFoundException(`Orçamento de ID '${id}' não foi localizado.`);
     }
 
-    return new BudgetEntity(budget as unknown as Partial<BudgetEntity>);
+    return new BudgetEntity({
+      ...budget,
+      items: budget.budgetItems,
+      payments: budget.budgetPayments,
+      statusHistory: budget.budgetStatusHistories,
+    } as unknown as Partial<BudgetEntity>);
   }
 
   // Atualiza o orçamento e cria um registro no histórico se o status mudou
@@ -87,9 +115,33 @@ export class BudgetsService {
     const current = await this.findById(id);
 
     const budget = await this.prisma.$transaction(async (tx) => {
+      // Se items forem enviados, limpamos os antigos e recriamos
+      if (dto.items) {
+        await tx.budgetItem.deleteMany({
+          where: { budgetId: id },
+        });
+
+        if (dto.items.length > 0) {
+          await tx.budgetItem.createMany({
+            data: dto.items.map((item) => ({
+              companyId: current.companyId,
+              budgetId: id,
+              name: item.name,
+              value: item.value,
+              serviceName: item.serviceName || item.name,
+              serviceValue: item.serviceValue ?? item.value,
+              suggestValue: item.suggestValue ?? item.value,
+            })),
+          });
+        }
+      }
+
+      const { items, ...budgetData } = dto;
+
       const updated = await tx.budget.update({
         where: { id },
-        data: dto,
+        data: budgetData,
+        include: { budgetItems: true, budgetPayments: true, budgetStatusHistories: true },
       });
 
       // Se o status foi alterado, grava no histórico de status automaticamente
@@ -108,7 +160,12 @@ export class BudgetsService {
       return updated;
     });
 
-    return new BudgetEntity(budget as unknown as Partial<BudgetEntity>);
+    return new BudgetEntity({
+      ...budget,
+      items: budget.budgetItems,
+      payments: budget.budgetPayments,
+      statusHistory: budget.budgetStatusHistories,
+    } as unknown as Partial<BudgetEntity>);
   }
 
   async remove(id: string): Promise<void> {

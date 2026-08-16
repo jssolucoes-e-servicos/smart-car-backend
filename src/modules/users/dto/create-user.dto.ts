@@ -19,9 +19,18 @@ export class CreateUserDto {
   @EmailValidator({
     fieldName: 'email',
     label: 'E-mail',
+    optional: true,
     exemple: 'joao.silva@email.com',
   })
-  email: string;
+  email?: string;
+
+  @StringValidator({
+    fieldName: 'username',
+    label: 'Nome de Usuário (Login)',
+    minLength: 3,
+    exemple: 'admin',
+  })
+  username: string;
 
   @StringValidator({
     fieldName: 'password',

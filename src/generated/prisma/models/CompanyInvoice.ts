@@ -429,7 +429,7 @@ export type CompanyInvoiceCreateInput = {
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutCompanyInvoicesInput
-  plan: Prisma.PlanCreateNestedOneWithoutCompanyInvoicesInput
+  plan: Prisma.PlanCreateNestedOneWithoutInvoicesInput
 }
 
 export type CompanyInvoiceUncheckedCreateInput = {
@@ -469,7 +469,7 @@ export type CompanyInvoiceUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutCompanyInvoicesNestedInput
-  plan?: Prisma.PlanUpdateOneRequiredWithoutCompanyInvoicesNestedInput
+  plan?: Prisma.PlanUpdateOneRequiredWithoutInvoicesNestedInput
 }
 
 export type CompanyInvoiceUncheckedUpdateInput = {
@@ -825,7 +825,7 @@ export type CompanyInvoiceCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  plan: Prisma.PlanCreateNestedOneWithoutCompanyInvoicesInput
+  plan: Prisma.PlanCreateNestedOneWithoutInvoicesInput
 }
 
 export type CompanyInvoiceUncheckedCreateWithoutCompanyInput = {
@@ -984,7 +984,7 @@ export type CompanyInvoiceUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  plan?: Prisma.PlanUpdateOneRequiredWithoutCompanyInvoicesNestedInput
+  plan?: Prisma.PlanUpdateOneRequiredWithoutInvoicesNestedInput
 }
 
 export type CompanyInvoiceUncheckedUpdateWithoutCompanyInput = {

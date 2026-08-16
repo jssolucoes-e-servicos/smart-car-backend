@@ -6,7 +6,7 @@ import { CompanySettingEntity } from 'src/common/entities';
 
 @Injectable()
 export class CompanySettingsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(dto: CreateCompanySettingDto): Promise<CompanySettingEntity> {
     const existing = await this.prisma.companySetting.findFirst({
@@ -25,7 +25,7 @@ export class CompanySettingsService {
         mercadoPagoMode: dto.mercadoPagoMode || 'TEST',
         mercadoPagoEmail: dto.mercadoPagoEmail,
         pixKey: dto.pixKey,
-        usingEMAIL: dto.usingEMAIL ?? false,
+        usingEmail: dto.usingEmail ?? false,
         emailHost: dto.emailHost,
         emailUser: dto.emailUser,
         emailPassword: dto.emailPassword,

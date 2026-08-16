@@ -305,6 +305,7 @@ export type PlanCompanyOrderByWithRelationInput = {
 
 export type PlanCompanyWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  companyId_planId?: Prisma.PlanCompanyCompanyIdPlanIdCompoundUniqueInput
   AND?: Prisma.PlanCompanyWhereInput | Prisma.PlanCompanyWhereInput[]
   OR?: Prisma.PlanCompanyWhereInput[]
   NOT?: Prisma.PlanCompanyWhereInput | Prisma.PlanCompanyWhereInput[]
@@ -322,7 +323,7 @@ export type PlanCompanyWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"PlanCompany"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   plan?: Prisma.XOR<Prisma.PlanScalarRelationFilter, Prisma.PlanWhereInput>
-}, "id">
+}, "id" | "companyId_planId">
 
 export type PlanCompanyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -377,7 +378,7 @@ export type PlanCompanyCreateInput = {
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutPlanCompaniesInput
-  plan: Prisma.PlanCreateNestedOneWithoutPlanCompaniesInput
+  plan: Prisma.PlanCreateNestedOneWithoutCompaniesInput
 }
 
 export type PlanCompanyUncheckedCreateInput = {
@@ -409,7 +410,7 @@ export type PlanCompanyUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutPlanCompaniesNestedInput
-  plan?: Prisma.PlanUpdateOneRequiredWithoutPlanCompaniesNestedInput
+  plan?: Prisma.PlanUpdateOneRequiredWithoutCompaniesNestedInput
 }
 
 export type PlanCompanyUncheckedUpdateInput = {
@@ -488,6 +489,11 @@ export type PlanCompanyOrderByRelevanceInput = {
   fields: Prisma.PlanCompanyOrderByRelevanceFieldEnum | Prisma.PlanCompanyOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
   search: string
+}
+
+export type PlanCompanyCompanyIdPlanIdCompoundUniqueInput = {
+  companyId: string
+  planId: string
 }
 
 export type PlanCompanyCountOrderByAggregateInput = {
@@ -725,7 +731,7 @@ export type PlanCompanyCreateWithoutCompanyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  plan: Prisma.PlanCreateNestedOneWithoutPlanCompaniesInput
+  plan: Prisma.PlanCreateNestedOneWithoutCompaniesInput
 }
 
 export type PlanCompanyUncheckedCreateWithoutCompanyInput = {
@@ -856,7 +862,7 @@ export type PlanCompanyUpdateWithoutCompanyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  plan?: Prisma.PlanUpdateOneRequiredWithoutPlanCompaniesNestedInput
+  plan?: Prisma.PlanUpdateOneRequiredWithoutCompaniesNestedInput
 }
 
 export type PlanCompanyUncheckedUpdateWithoutCompanyInput = {

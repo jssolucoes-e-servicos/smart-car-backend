@@ -60,6 +60,7 @@ export type BudgetMinAggregateOutputType = {
   status: $Enums.BudgetStatusEnum | null
   approved: boolean | null
   active: boolean | null
+  createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
 }
@@ -88,6 +89,7 @@ export type BudgetMaxAggregateOutputType = {
   status: $Enums.BudgetStatusEnum | null
   approved: boolean | null
   active: boolean | null
+  createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
 }
@@ -116,6 +118,7 @@ export type BudgetCountAggregateOutputType = {
   status: number
   approved: number
   active: number
+  createdAt: number
   updatedAt: number
   deletedAt: number
   _all: number
@@ -156,6 +159,7 @@ export type BudgetMinAggregateInputType = {
   status?: true
   approved?: true
   active?: true
+  createdAt?: true
   updatedAt?: true
   deletedAt?: true
 }
@@ -184,6 +188,7 @@ export type BudgetMaxAggregateInputType = {
   status?: true
   approved?: true
   active?: true
+  createdAt?: true
   updatedAt?: true
   deletedAt?: true
 }
@@ -212,6 +217,7 @@ export type BudgetCountAggregateInputType = {
   status?: true
   approved?: true
   active?: true
+  createdAt?: true
   updatedAt?: true
   deletedAt?: true
   _all?: true
@@ -327,6 +333,7 @@ export type BudgetGroupByOutputType = {
   status: $Enums.BudgetStatusEnum
   approved: boolean
   active: boolean
+  createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
   _count: BudgetCountAggregateOutputType | null
@@ -378,6 +385,7 @@ export type BudgetWhereInput = {
   status?: Prisma.EnumBudgetStatusEnumFilter<"Budget"> | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFilter<"Budget"> | boolean
   active?: Prisma.BoolFilter<"Budget"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Budget"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
@@ -411,6 +419,7 @@ export type BudgetOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   approved?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
@@ -448,6 +457,7 @@ export type BudgetWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumBudgetStatusEnumFilter<"Budget"> | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFilter<"Budget"> | boolean
   active?: Prisma.BoolFilter<"Budget"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Budget"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
@@ -481,6 +491,7 @@ export type BudgetOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   approved?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BudgetCountOrderByAggregateInput
@@ -517,6 +528,7 @@ export type BudgetScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumBudgetStatusEnumWithAggregatesFilter<"Budget"> | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolWithAggregatesFilter<"Budget"> | boolean
   active?: Prisma.BoolWithAggregatesFilter<"Budget"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Budget"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Budget"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Budget"> | Date | string | null
 }
@@ -544,6 +556,7 @@ export type BudgetCreateInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutBudgetsInput
@@ -577,6 +590,7 @@ export type BudgetUncheckedCreateInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedCreateNestedManyWithoutBudgetInput
@@ -608,6 +622,7 @@ export type BudgetUpdateInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBudgetsNestedInput
@@ -641,6 +656,7 @@ export type BudgetUncheckedUpdateInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedUpdateManyWithoutBudgetNestedInput
@@ -673,6 +689,7 @@ export type BudgetCreateManyInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
@@ -700,6 +717,7 @@ export type BudgetUpdateManyMutationInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -728,6 +746,7 @@ export type BudgetUncheckedUpdateManyInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -772,6 +791,7 @@ export type BudgetCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   approved?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
@@ -805,6 +825,7 @@ export type BudgetMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   approved?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
@@ -833,6 +854,7 @@ export type BudgetMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   approved?: Prisma.SortOrder
   active?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
@@ -979,6 +1001,7 @@ export type BudgetCreateWithoutCompanyInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryCreateNestedManyWithoutBudgetInput
@@ -1010,6 +1033,7 @@ export type BudgetUncheckedCreateWithoutCompanyInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedCreateNestedManyWithoutBudgetInput
@@ -1071,6 +1095,7 @@ export type BudgetScalarWhereInput = {
   status?: Prisma.EnumBudgetStatusEnumFilter<"Budget"> | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFilter<"Budget"> | boolean
   active?: Prisma.BoolFilter<"Budget"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Budget"> | Date | string | null
 }
@@ -1098,6 +1123,7 @@ export type BudgetCreateWithoutBudgetStatusHistoriesInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutBudgetsInput
@@ -1130,6 +1156,7 @@ export type BudgetUncheckedCreateWithoutBudgetStatusHistoriesInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutBudgetInput
@@ -1176,6 +1203,7 @@ export type BudgetUpdateWithoutBudgetStatusHistoriesInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBudgetsNestedInput
@@ -1208,6 +1236,7 @@ export type BudgetUncheckedUpdateWithoutBudgetStatusHistoriesInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutBudgetNestedInput
@@ -1238,6 +1267,7 @@ export type BudgetCreateWithoutBudgetItemsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutBudgetsInput
@@ -1270,6 +1300,7 @@ export type BudgetUncheckedCreateWithoutBudgetItemsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedCreateNestedManyWithoutBudgetInput
@@ -1316,6 +1347,7 @@ export type BudgetUpdateWithoutBudgetItemsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBudgetsNestedInput
@@ -1348,6 +1380,7 @@ export type BudgetUncheckedUpdateWithoutBudgetItemsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedUpdateManyWithoutBudgetNestedInput
@@ -1378,6 +1411,7 @@ export type BudgetCreateWithoutBudgetPaymentsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutBudgetsInput
@@ -1410,6 +1444,7 @@ export type BudgetUncheckedCreateWithoutBudgetPaymentsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedCreateNestedManyWithoutBudgetInput
@@ -1456,6 +1491,7 @@ export type BudgetUpdateWithoutBudgetPaymentsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBudgetsNestedInput
@@ -1488,6 +1524,7 @@ export type BudgetUncheckedUpdateWithoutBudgetPaymentsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedUpdateManyWithoutBudgetNestedInput
@@ -1518,6 +1555,7 @@ export type BudgetCreateWithoutReceiptsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutBudgetsInput
@@ -1550,6 +1588,7 @@ export type BudgetUncheckedCreateWithoutReceiptsInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedCreateNestedManyWithoutBudgetInput
@@ -1596,6 +1635,7 @@ export type BudgetUpdateWithoutReceiptsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutBudgetsNestedInput
@@ -1628,6 +1668,7 @@ export type BudgetUncheckedUpdateWithoutReceiptsInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedUpdateManyWithoutBudgetNestedInput
@@ -1658,6 +1699,7 @@ export type BudgetCreateManyCompanyInput = {
   status?: $Enums.BudgetStatusEnum
   approved?: boolean
   active?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
@@ -1685,6 +1727,7 @@ export type BudgetUpdateWithoutCompanyInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUpdateManyWithoutBudgetNestedInput
@@ -1716,6 +1759,7 @@ export type BudgetUncheckedUpdateWithoutCompanyInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budgetStatusHistories?: Prisma.BudgetStatusHistoryUncheckedUpdateManyWithoutBudgetNestedInput
@@ -1747,6 +1791,7 @@ export type BudgetUncheckedUpdateManyWithoutCompanyInput = {
   status?: Prisma.EnumBudgetStatusEnumFieldUpdateOperationsInput | $Enums.BudgetStatusEnum
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1833,6 +1878,7 @@ export type BudgetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   status?: boolean
   approved?: boolean
   active?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
@@ -1867,6 +1913,7 @@ export type BudgetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status?: boolean
   approved?: boolean
   active?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
@@ -1896,6 +1943,7 @@ export type BudgetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status?: boolean
   approved?: boolean
   active?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
@@ -1925,11 +1973,12 @@ export type BudgetSelectScalar = {
   status?: boolean
   approved?: boolean
   active?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type BudgetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "customerName" | "document" | "phone" | "email" | "zipCode" | "publicPlace" | "number" | "complement" | "neighborhood" | "city" | "brand" | "model" | "plate" | "year" | "km" | "description" | "totalValue" | "status" | "approved" | "active" | "updatedAt" | "deletedAt", ExtArgs["result"]["budget"]>
+export type BudgetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "code" | "customerName" | "document" | "phone" | "email" | "zipCode" | "publicPlace" | "number" | "complement" | "neighborhood" | "city" | "brand" | "model" | "plate" | "year" | "km" | "description" | "totalValue" | "status" | "approved" | "active" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["budget"]>
 export type BudgetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   budgetStatusHistories?: boolean | Prisma.Budget$budgetStatusHistoriesArgs<ExtArgs>
@@ -1978,6 +2027,7 @@ export type $BudgetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     status: $Enums.BudgetStatusEnum
     approved: boolean
     active: boolean
+    createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
   }, ExtArgs["result"]["budget"]>
@@ -2431,6 +2481,7 @@ export interface BudgetFieldRefs {
   readonly status: Prisma.FieldRef<"Budget", 'BudgetStatusEnum'>
   readonly approved: Prisma.FieldRef<"Budget", 'Boolean'>
   readonly active: Prisma.FieldRef<"Budget", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"Budget", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Budget", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Budget", 'DateTime'>
 }

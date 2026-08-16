@@ -26,7 +26,7 @@ export class CompanySettingEntity {
   pixKey?: string;
 
   @ApiProperty({ example: false })
-  usingEMAIL: boolean;
+  usingEmail: boolean;
 
   @ApiPropertyOptional({ example: 'smtp.smartcar.com' })
   emailHost?: string;

@@ -1,4 +1,55 @@
-import { StringValidator, NumberValidator, BooleanValidator, EnumValidator } from 'src/common/validators';
+import { StringValidator, NumberValidator, BooleanValidator, EnumValidator, NestedValidator } from 'src/common/validators';
+
+export class CreateBudgetNestedItemDto {
+  @StringValidator({
+    fieldName: 'id',
+    label: 'ID do Item',
+    optional: true,
+    exemple: 'item-123',
+  })
+  id?: string;
+
+  @StringValidator({
+    fieldName: 'name',
+    label: 'Nome do Item',
+    exemple: 'Pastilha de Freio',
+  })
+  name: string;
+
+  @NumberValidator({
+    fieldName: 'value',
+    label: 'Valor',
+    min: 0,
+    exemple: 150.00,
+  })
+  value: number;
+
+  @StringValidator({
+    fieldName: 'serviceName',
+    label: 'Nome do Serviço',
+    optional: true,
+    exemple: 'Serviço de Freio',
+  })
+  serviceName?: string;
+
+  @NumberValidator({
+    fieldName: 'serviceValue',
+    label: 'Valor do Serviço',
+    optional: true,
+    min: 0,
+    exemple: 150.00,
+  })
+  serviceValue?: number;
+
+  @NumberValidator({
+    fieldName: 'suggestValue',
+    label: 'Valor Sugerido',
+    optional: true,
+    min: 0,
+    exemple: 150.00,
+  })
+  suggestValue?: number;
+}
 
 export class CreateBudgetDto {
   @StringValidator({
@@ -164,4 +215,13 @@ export class CreateBudgetDto {
     optional: true,
   })
   approved?: boolean;
+
+  @NestedValidator({
+    fieldName: 'items',
+    label: 'Itens do Orçamento',
+    optional: true,
+    isArray: true,
+    dto: CreateBudgetNestedItemDto,
+  })
+  items?: CreateBudgetNestedItemDto[];
 }

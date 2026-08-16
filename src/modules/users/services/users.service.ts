@@ -14,11 +14,20 @@ export class UsersService {
   ) {}
 
   async create(dto: CreateUserDto): Promise<UserEntity> {
-    const existingEmail = await this.prisma.user.findUnique({
-      where: { email: dto.email },
+    if (dto.email) {
+      const existingEmail = await this.prisma.user.findFirst({
+        where: { email: dto.email },
+      });
+      if (existingEmail) {
+        throw new ConflictException(`Já existe um usuário cadastrado com o e-mail '${dto.email}'.`);
+      }
+    }
+
+    const existingUsername = await this.prisma.user.findFirst({
+      where: { companyId: dto.companyId, username: dto.username },
     });
-    if (existingEmail) {
-      throw new ConflictException(`Já existe um usuário cadastrado com o e-mail '${dto.email}'.`);
+    if (existingUsername) {
+      throw new ConflictException(`Já existe um usuário cadastrado com o login '${dto.username}' nesta oficina.`);
     }
 
     // Gerar código único e sequencial para a empresa usando CountersService
@@ -30,7 +39,8 @@ export class UsersService {
         companyId: dto.companyId,
         code: nextCode,
         name: dto.name,
-        email: dto.email,
+        email: dto.email || null,
+        username: dto.username,
         password: hashedPassword,
       },
     });
@@ -60,7 +70,7 @@ export class UsersService {
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<UserEntity> {
-    await this.findById(id);
+    const existingUser = await this.findById(id);
 
     if (dto.email) {
       const existingEmail = await this.prisma.user.findFirst({
@@ -68,6 +78,15 @@ export class UsersService {
       });
       if (existingEmail) {
         throw new ConflictException(`O e-mail '${dto.email}' já está em uso por outro usuário.`);
+      }
+    }
+
+    if (dto.username) {
+      const existingUsername = await this.prisma.user.findFirst({
+        where: { companyId: existingUser.companyId, username: dto.username, NOT: { id } },
+      });
+      if (existingUsername) {
+        throw new ConflictException(`O login '${dto.username}' já está em uso nesta oficina.`);
       }
     }
 

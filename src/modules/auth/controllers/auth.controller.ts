@@ -16,11 +16,17 @@ export class AuthController {
     return this.authService.login(dto);
   }
 
+  @Post('login/manager')
+  @ApiOperation({ summary: 'Realiza login do gerente SaaS via E-mail e Senha' })
+  async loginManager(@Body() dto: LoginDto) {
+    return this.authService.loginManager(dto);
+  }
+
   @Get('me')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT')
-  @ApiOperation({ summary: 'Retorna os dados da pessoa e a lista de igrejas (vínculos) para troca de contexto' })
-  async getMe(@CurrentUser('sub') personId: string) {
-    return this.authService.getMe(personId);
+  @ApiOperation({ summary: 'Retorna os dados da pessoa conectada (usuário ou gerente)' })
+  async getMe(@CurrentUser() currentUser: any) {
+    return this.authService.getMe(currentUser.sub, currentUser.isManager);
   }
 }

@@ -154,7 +154,7 @@ export const CompanySettingScalarFieldEnum = {
   mercadoPagoMode: 'mercadoPagoMode',
   mercadoPagoEmail: 'mercadoPagoEmail',
   pixKey: 'pixKey',
-  usingEMAIL: 'usingEMAIL',
+  usingEmail: 'usingEmail',
   emailHost: 'emailHost',
   emailUser: 'emailUser',
   emailPassword: 'emailPassword',
@@ -174,11 +174,13 @@ export const UserScalarFieldEnum = {
   code: 'code',
   name: 'name',
   email: 'email',
+  username: 'username',
   password: 'password',
   active: 'active',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  role: 'role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -282,6 +284,7 @@ export const BudgetScalarFieldEnum = {
   status: 'status',
   approved: 'approved',
   active: 'active',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 } as const
@@ -457,6 +460,7 @@ export const UserOrderByRelevanceFieldEnum = {
   companyId: 'companyId',
   name: 'name',
   email: 'email',
+  username: 'username',
   password: 'password'
 } as const
 

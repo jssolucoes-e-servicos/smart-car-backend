@@ -18,7 +18,7 @@ async function bootstrap() {
     origin: '*',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-company-id'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-company-id', 'x-user-id'],
   });
 
   app.useGlobalPipes(

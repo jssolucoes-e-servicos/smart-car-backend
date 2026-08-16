@@ -28,7 +28,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org smart-church-platform --project dogao-do-pastor-erp-backend ./dist && sentry-cli sourcemaps upload --org smart-church-platform --project dogao-do-pastor-erp-backend ./dist",
     "prisma:generate": "npx prisma generate",
-    "prisma:reset": "npx prisma migrate reset",
+    "prisma:reset": "npx prisma generate && npx prisma migrate reset",
     "prisma:seed": "npx prisma db seed",
     "prisma:dev": "npm run prisma:reset && npm run prisma:seed",
     "prisma:migrate:dev": "npx prisma migrate dev",

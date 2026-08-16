@@ -272,7 +272,7 @@ export type ReceiptGroupByOutputType = {
   active: boolean
   createdAt: Date
   updatedAt: Date
-  deletedAt: Date
+  deletedAt: Date | null
   _count: ReceiptCountAggregateOutputType | null
   _avg: ReceiptAvgAggregateOutputType | null
   _sum: ReceiptSumAggregateOutputType | null
@@ -315,7 +315,7 @@ export type ReceiptWhereInput = {
   active?: Prisma.BoolFilter<"Receipt"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
-  deletedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Receipt"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   budget?: Prisma.XOR<Prisma.BudgetNullableScalarRelationFilter, Prisma.BudgetWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -338,7 +338,7 @@ export type ReceiptOrderByWithRelationInput = {
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  deletedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
   budget?: Prisma.BudgetOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
@@ -365,7 +365,7 @@ export type ReceiptWhereUniqueInput = Prisma.AtLeast<{
   active?: Prisma.BoolFilter<"Receipt"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
-  deletedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Receipt"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   budget?: Prisma.XOR<Prisma.BudgetNullableScalarRelationFilter, Prisma.BudgetWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -388,7 +388,7 @@ export type ReceiptOrderByWithAggregationInput = {
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  deletedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ReceiptCountOrderByAggregateInput
   _avg?: Prisma.ReceiptAvgOrderByAggregateInput
   _max?: Prisma.ReceiptMaxOrderByAggregateInput
@@ -416,7 +416,7 @@ export type ReceiptScalarWhereWithAggregatesInput = {
   active?: Prisma.BoolWithAggregatesFilter<"Receipt"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Receipt"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Receipt"> | Date | string
-  deletedAt?: Prisma.DateTimeWithAggregatesFilter<"Receipt"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Receipt"> | Date | string | null
 }
 
 export type ReceiptCreateInput = {
@@ -433,7 +433,7 @@ export type ReceiptCreateInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutReceiptsInput
   budget?: Prisma.BudgetCreateNestedOneWithoutReceiptsInput
   user: Prisma.UserCreateNestedOneWithoutReceiptsInput
@@ -456,7 +456,7 @@ export type ReceiptUncheckedCreateInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptUpdateInput = {
@@ -473,7 +473,7 @@ export type ReceiptUpdateInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutReceiptsNestedInput
   budget?: Prisma.BudgetUpdateOneWithoutReceiptsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutReceiptsNestedInput
@@ -496,7 +496,7 @@ export type ReceiptUncheckedUpdateInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptCreateManyInput = {
@@ -516,7 +516,7 @@ export type ReceiptCreateManyInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptUpdateManyMutationInput = {
@@ -533,7 +533,7 @@ export type ReceiptUpdateManyMutationInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptUncheckedUpdateManyInput = {
@@ -553,7 +553,7 @@ export type ReceiptUncheckedUpdateManyInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptListRelationFilter = {
@@ -786,7 +786,7 @@ export type ReceiptCreateWithoutCompanyInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
   budget?: Prisma.BudgetCreateNestedOneWithoutReceiptsInput
   user: Prisma.UserCreateNestedOneWithoutReceiptsInput
 }
@@ -807,7 +807,7 @@ export type ReceiptUncheckedCreateWithoutCompanyInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptCreateOrConnectWithoutCompanyInput = {
@@ -856,7 +856,7 @@ export type ReceiptScalarWhereInput = {
   active?: Prisma.BoolFilter<"Receipt"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
-  deletedAt?: Prisma.DateTimeFilter<"Receipt"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Receipt"> | Date | string | null
 }
 
 export type ReceiptCreateWithoutUserInput = {
@@ -873,7 +873,7 @@ export type ReceiptCreateWithoutUserInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutReceiptsInput
   budget?: Prisma.BudgetCreateNestedOneWithoutReceiptsInput
 }
@@ -894,7 +894,7 @@ export type ReceiptUncheckedCreateWithoutUserInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptCreateOrConnectWithoutUserInput = {
@@ -937,7 +937,7 @@ export type ReceiptCreateWithoutBudgetInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
   company: Prisma.CompanyCreateNestedOneWithoutReceiptsInput
   user: Prisma.UserCreateNestedOneWithoutReceiptsInput
 }
@@ -958,7 +958,7 @@ export type ReceiptUncheckedCreateWithoutBudgetInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptCreateOrConnectWithoutBudgetInput = {
@@ -1003,7 +1003,7 @@ export type ReceiptCreateManyCompanyInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptUpdateWithoutCompanyInput = {
@@ -1020,7 +1020,7 @@ export type ReceiptUpdateWithoutCompanyInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   budget?: Prisma.BudgetUpdateOneWithoutReceiptsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutReceiptsNestedInput
 }
@@ -1041,7 +1041,7 @@ export type ReceiptUncheckedUpdateWithoutCompanyInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptUncheckedUpdateManyWithoutCompanyInput = {
@@ -1060,7 +1060,7 @@ export type ReceiptUncheckedUpdateManyWithoutCompanyInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptCreateManyUserInput = {
@@ -1079,7 +1079,7 @@ export type ReceiptCreateManyUserInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptUpdateWithoutUserInput = {
@@ -1096,7 +1096,7 @@ export type ReceiptUpdateWithoutUserInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutReceiptsNestedInput
   budget?: Prisma.BudgetUpdateOneWithoutReceiptsNestedInput
 }
@@ -1117,7 +1117,7 @@ export type ReceiptUncheckedUpdateWithoutUserInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptUncheckedUpdateManyWithoutUserInput = {
@@ -1136,7 +1136,7 @@ export type ReceiptUncheckedUpdateManyWithoutUserInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptCreateManyBudgetInput = {
@@ -1155,7 +1155,7 @@ export type ReceiptCreateManyBudgetInput = {
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  deletedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ReceiptUpdateWithoutBudgetInput = {
@@ -1172,7 +1172,7 @@ export type ReceiptUpdateWithoutBudgetInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   company?: Prisma.CompanyUpdateOneRequiredWithoutReceiptsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutReceiptsNestedInput
 }
@@ -1193,7 +1193,7 @@ export type ReceiptUncheckedUpdateWithoutBudgetInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ReceiptUncheckedUpdateManyWithoutBudgetInput = {
@@ -1212,7 +1212,7 @@ export type ReceiptUncheckedUpdateManyWithoutBudgetInput = {
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deletedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1347,7 +1347,7 @@ export type $ReceiptPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     active: boolean
     createdAt: Date
     updatedAt: Date
-    deletedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["receipt"]>
   composites: {}
 }

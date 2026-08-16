@@ -1,6 +1,4 @@
-// src/common/discord/services/discord.service.ts
-
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Client, TextChannel } from 'discord.js';
 import { createReadStream, existsSync } from 'fs';
@@ -9,13 +7,19 @@ import os from 'node:os';
 import { basename } from 'path';
 
 @Injectable()
-export class DiscordService {
+export class DiscordService implements OnModuleInit {
   private readonly logger = new Logger(this.constructor.name);
 
   constructor(
     private readonly config: ConfigService,
     private readonly client: Client,
   ) { }
+
+  onModuleInit() {
+    this.client.on('error', (error) => {
+      this.logger.error('Erro de conexão no cliente do Discord:', error);
+    });
+  }
 
   @Once('clientReady')
   public async onClientReady(@Context() [client]: [Client]) {

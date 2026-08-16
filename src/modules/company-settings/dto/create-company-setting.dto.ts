@@ -57,11 +57,11 @@ export class CreateCompanySettingDto {
   pixKey?: string;
 
   @BooleanValidator({
-    fieldName: 'usingEMAIL',
+    fieldName: 'usingEmail',
     label: 'Usa E-mail Próprio',
     optional: true,
   })
-  usingEMAIL?: boolean;
+  usingEmail?: boolean;
 
   @StringValidator({
     fieldName: 'emailHost',

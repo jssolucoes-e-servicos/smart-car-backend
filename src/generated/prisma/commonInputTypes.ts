@@ -233,6 +233,23 @@ export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
 }
 
+export type EnumRoleEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
+}
+
+export type EnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel> | $Enums.RoleEnum
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
+}
+
 export type EnumPaymentFrequencyEnumFilter<$PrismaModel = never> = {
   equals?: $Enums.PaymentFrequencyEnum | Prisma.EnumPaymentFrequencyEnumFieldRefInput<$PrismaModel>
   in?: $Enums.PaymentFrequencyEnum[] | Prisma.ListEnumPaymentFrequencyEnumFieldRefInput<$PrismaModel>
@@ -554,6 +571,23 @@ export type NestedFloatNullableFilter<$PrismaModel = never> = {
   gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
+}
+
+export type NestedEnumRoleEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
+}
+
+export type NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RoleEnum[] | Prisma.ListEnumRoleEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel> | $Enums.RoleEnum
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
 }
 
 export type NestedEnumPaymentFrequencyEnumFilter<$PrismaModel = never> = {

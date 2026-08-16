@@ -1,4 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { BudgetItemEntity } from './budget-item.entity';
+import { BudgetPaymentEntity } from './budget-payment.entity';
 
 export class BudgetEntity {
   @ApiProperty({ example: 'bud-123' })
@@ -72,6 +74,12 @@ export class BudgetEntity {
 
   @ApiProperty()
   updatedAt: Date;
+
+  @ApiPropertyOptional({ type: [BudgetItemEntity] })
+  items?: BudgetItemEntity[];
+
+  @ApiPropertyOptional({ type: [BudgetPaymentEntity] })
+  payments?: BudgetPaymentEntity[];
 
   constructor(partial: Partial<BudgetEntity>) {
     Object.assign(this, partial);

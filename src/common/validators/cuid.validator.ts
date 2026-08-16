@@ -14,7 +14,7 @@ export function CuidValidator({
 }: CuidValidatorType) {
   if (label === undefined) label = fieldName;
 
-  const cuidRegex = /^c[a-z0-9]{24,}$/i;
+  const cuidRegex = /^(c[a-z0-9]{24,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
   if (optional === true) {
     return applyDecorators(

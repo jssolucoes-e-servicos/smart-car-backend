@@ -95,3 +95,12 @@ export const ReceiptEnum = {
 } as const
 
 export type ReceiptEnum = (typeof ReceiptEnum)[keyof typeof ReceiptEnum]
+
+
+export const RoleEnum = {
+  ADMIN: 'ADMIN',
+  FINANCIAL: 'FINANCIAL',
+  OPERATOR: 'OPERATOR'
+} as const
+
+export type RoleEnum = (typeof RoleEnum)[keyof typeof RoleEnum]

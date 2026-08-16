@@ -78,64 +78,64 @@ enum ReceiptEnum {
 }
 
 model Manager {
-  id       String @id @default(cuid())
-  name     String @unique
-  cpf      String
-  phone    String
-  email    String @unique
-  password String
+  id        String    @id @default(cuid()) @map("id")
+  name      String    @unique @map("name")
+  cpf       String    @map("cpf")
+  phone     String    @map("phone")
+  email     String    @unique @map("email")
+  password  String    @map("password")
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
-
+  @@index([id, email, cpf, phone])
   @@map("managers")
 }
 
 model Plan {
-  id              String           @id @default(cuid())
-  name            String           @unique
-  description     String?
-  month           Float            @default(0)
-  biannual        Float            @default(0)
-  annual          Float            @default(0)
-  maxUsers        Int              @default(0)
-  maxBudgetsMonth Int              @default(0)
-  maxDevices      Int              @default(0)
-  active          Boolean          @default(true)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  deletedAt       DateTime?
-  planCompanies   PlanCompany[]
-  companyInvoices CompanyInvoice[]
+  id              String           @id @default(cuid()) @map("id")
+  name            String           @unique @map("name")
+  description     String?          @map("description")
+  month           Float            @default(0) @map("month")
+  biannual        Float            @default(0) @map("biannual")
+  annual          Float            @default(0) @map("annual")
+  maxUsers        Int              @default(0) @map("max_users")
+  maxBudgetsMonth Int              @default(0) @map("max_budgets_month")
+  maxDevices      Int              @default(0) @map("max_devices")
+  active          Boolean          @default(true) @map("active")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  deletedAt       DateTime?        @map("deleted_at")
+  companies       PlanCompany[]
+  invoices        CompanyInvoice[]
 
   @@map("plans")
 }
 
 model Company {
-  id            String @id @default(cuid())
-  name          String
-  fantasy       String
-  cnpj          String
-  ie            String
-  phone         String
-  email         String
-  addressInLine String
-  zipCode       String
-  publicPlace   String
-  number        String
-  complement    String
-  neighborhood  String
-  city          String
-  state         String
-  logo          String
-  hash          String @default(uuid())
+  id            String @id @default(cuid()) @map("id")
+  name          String @map("name")
+  fantasy       String @map("fantasy")
+  cnpj          String @map("cnpj")
+  ie            String @map("ie")
+  phone         String @map("phone")
+  email         String @map("email")
+  addressInLine String @map("address_in_line")
+  zipCode       String @map("zip_code")
+  publicPlace   String @map("public_place")
+  number        String @map("number")
+  complement    String @map("complement")
+  neighborhood  String @map("neighborhood")
+  city          String @map("city")
+  state         String @map("state")
+  logo          String @map("logo")
+  hash          String @default(uuid()) @map("hash")
 
-  active                Boolean               @default(true)
-  createdAt             DateTime              @default(now())
-  updatedAt             DateTime              @updatedAt
-  deletedAt             DateTime?
+  active                Boolean               @default(true) @map("active")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+  deletedAt             DateTime?             @map("deleted_at")
   companySettings       CompanySetting[]
   users                 User[]
   planCompanies         PlanCompany[]
@@ -148,161 +148,180 @@ model Company {
   budgetPayments        BudgetPayment[]
   receipts              Receipt[]
 
+  @@index([id, cnpj, fantasy, email, phone, zipCode, hash])
   @@map("companies")
 }
 
 model CompanySetting {
-  id               String  @id @default(cuid())
+  id               String  @id @default(cuid()) @map("id")
   company          Company @relation(fields: [companyId], references: [id])
-  companyId        String
-  themeColor       String  @default("#000000")
-  mercadoPagoKey   String?
-  mercadoPagoToken String?
-  mercadoPagoMode  String  @default("TEST")
-  mercadoPagoEmail String?
-  pixKey           String?
+  companyId        String  @map("company_id")
+  themeColor       String  @default("#000000") @map("theme_color")
+  mercadoPagoKey   String? @map("mercado_pago_key")
+  mercadoPagoToken String? @map("mercado_pago_token")
+  mercadoPagoMode  String  @default("TEST") @map("mercado_pago_mode")
+  mercadoPagoEmail String? @map("mercado_pago_email")
+  pixKey           String? @map("pix_key")
 
-  usingEMAIL    Boolean @default(false) // true, false
-  emailHost     String?
-  emailUser     String?
-  emailPassword String?
-  emailPort     Int?
+  usingEmail    Boolean @default(false) @map("using_email")
+  emailHost     String? @map("email_host")
+  emailUser     String? @map("email_user")
+  emailPassword String? @map("email_password")
+  emailPort     Int?    @map("email_port")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
+  @@index([id, companyId])
   @@map("company_settings")
 }
 
+enum RoleEnum {
+  ADMIN
+  FINANCIAL
+  OPERATOR
+}
+
 model User {
-  id                    String                @id @default(cuid())
+  id                    String                @id @default(cuid()) @map("id")
   company               Company               @relation(fields: [companyId], references: [id])
-  companyId             String
-  code                  Int
-  name                  String
-  email                 String                @unique
-  password              String
-  active                Boolean               @default(true)
-  createdAt             DateTime              @default(now())
-  updatedAt             DateTime              @updatedAt
-  deletedAt             DateTime?
+  companyId             String                @map("company_id")
+  code                  Int                   @map("code")
+  name                  String                @map("name")
+  email                 String?               @map("email")
+  username              String                @default("") @map("username")
+  password              String                @map("password")
+  active                Boolean               @default(true) @map("active")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+  deletedAt             DateTime?             @map("deleted_at")
+  role                  RoleEnum              @default(OPERATOR) @map("role")
   budgetStatusHistories BudgetStatusHistory[]
   budgetPayments        BudgetPayment[]
   receipts              Receipt[]
 
+  @@unique([companyId, code])
+  @@unique([companyId, username])
+  @@index([id, companyId, username, email, code])
   @@map("users")
 }
 
 model PlanCompany {
-  id               String                @id @default(cuid())
+  id               String                @id @default(cuid()) @map("id")
   company          Company               @relation(fields: [companyId], references: [id])
-  companyId        String
+  companyId        String                @map("company_id")
   plan             Plan                  @relation(fields: [planId], references: [id])
-  planId           String
-  isTrial          Boolean               @default(false)
-  expiresAt        DateTime?
-  expired          Boolean               @default(false)
-  paymentFrequency PaymentFrequencyEnum  @default(MONTHLY)
-  dueDate          Int                   @default(15)
-  paymentMethod    PlanPaymentMethodEnum @default(PIX)
+  planId           String                @map("plan_id")
+  isTrial          Boolean               @default(false) @map("is_trial")
+  expiresAt        DateTime?             @map("expires_at")
+  expired          Boolean               @default(false) @map("expired")
+  paymentFrequency PaymentFrequencyEnum  @default(MONTHLY) @map("payment_frequency")
+  dueDate          Int                   @default(15) @map("due_date")
+  paymentMethod    PlanPaymentMethodEnum @default(PIX) @map("payment_method")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
+  @@unique([companyId, planId])
+  @@index([id, companyId, planId, isTrial, expiresAt, expired, paymentFrequency, dueDate, paymentMethod])
   @@map("plan_companies")
 }
 
 model CompanyInvoice {
-  id            String                @id @default(cuid())
+  id            String                @id @default(cuid()) @map("id")
   company       Company               @relation(fields: [companyId], references: [id])
-  companyId     String
+  companyId     String                @map("company_id")
   plan          Plan                  @relation(fields: [planId], references: [id])
-  planId        String
-  reference     String
-  amount        Float                 @default(0)
-  dueDate       DateTime
-  paid          Boolean               @default(false)
-  paidAt        DateTime?
-  externalId    String?
-  externalMeta  String?
-  providerName  String?
-  paymentMethod PlanPaymentMethodEnum @default(PIX)
-  invoiceStatus InvoiceStatusEnum     @default(PENDING)
+  planId        String                @map("plan_id")
+  reference     String                @map("reference")
+  amount        Float                 @default(0) @map("amount")
+  dueDate       DateTime              @map("due_date")
+  paid          Boolean               @default(false) @map("paid")
+  paidAt        DateTime?             @map("paid_at")
+  externalId    String?               @map("external_id")
+  externalMeta  String?               @map("external_meta")
+  providerName  String?               @map("provider_name")
+  paymentMethod PlanPaymentMethodEnum @default(PIX) @map("payment_method")
+  invoiceStatus InvoiceStatusEnum     @default(PENDING) @map("invoice_status")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
+  @@index([companyId, planId, reference, externalId, providerName, paymentMethod, invoiceStatus])
   @@map("company_invoices")
 }
 
 model Service {
-  id          String  @id @default(cuid())
+  id          String  @id @default(cuid()) @map("id")
   company     Company @relation(fields: [companyId], references: [id])
-  companyId   String
-  code        Int
-  name        String
-  description String  @default("")
-  value       Float
+  companyId   String  @map("company_id")
+  code        Int     @map("code")
+  name        String  @map("name")
+  description String  @default("") @map("description")
+  value       Float   @map("value")
 
-  active      Boolean      @default(true)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  deletedAt   DateTime?
+  active      Boolean      @default(true) @map("active")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  deletedAt   DateTime?    @map("deleted_at")
   budgetItems BudgetItem[]
 
+  @@unique([companyId, code])
+  @@index([id, companyId, code, name, description, value, active, createdAt, updatedAt, deletedAt])
   @@map("services")
 }
 
 model Counter {
-  id        String    @id @default(uuid())
+  id        String    @id @default(cuid()) @map("id")
   company   Company   @relation(fields: [companyId], references: [id])
-  companyId String
-  budget    Int       @default(0)
-  service   Int       @default(0)
-  receipt   Int       @default(0)
-  user      Int       @default(0)
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  companyId String    @map("company_id")
+  budget    Int       @default(0) @map("budget")
+  service   Int       @default(0) @map("service")
+  receipt   Int       @default(0) @map("receipt")
+  user      Int       @default(0) @map("user")
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
   @@map("budget_counters")
 }
 
 model Budget {
-  id           String           @id @default(uuid())
+  id           String           @id @default(cuid()) @map("id")
   company      Company          @relation(fields: [companyId], references: [id])
-  companyId    String
-  code         Int
-  customerName String
-  document     String           @default("")
-  phone        String           @default("")
-  email        String           @default("")
-  zipCode      String           @default("")
-  publicPlace  String           @default("")
-  number       String           @default("")
-  complement   String           @default("")
-  neighborhood String           @default("")
-  city         String           @default("")
-  brand        String
-  model        String
-  plate        String
-  year         String           @default("")
-  km           String           @default("")
-  description  String           @default("")
-  totalValue   Float
-  status       BudgetStatusEnum @default(PENDENT)
-  approved     Boolean          @default(false)
+  companyId    String           @map("company_id")
+  code         Int              @map("code")
+  customerName String           @map("customer_name")
+  document     String           @default("") @map("document")
+  phone        String           @default("") @map("phone")
+  email        String           @default("") @map("email")
+  zipCode      String           @default("") @map("zip_code")
+  publicPlace  String           @default("") @map("public_place")
+  number       String           @default("") @map("number")
+  complement   String           @default("") @map("complement")
+  neighborhood String           @default("") @map("neighborhood")
+  city         String           @default("") @map("city")
+  brand        String           @map("brand")
+  model        String           @map("model")
+  plate        String           @map("plate")
+  year         String           @default("") @map("year")
+  km           String           @default("") @map("km")
+  description  String           @default("") @map("description")
+  totalValue   Float            @map("total_value")
+  status       BudgetStatusEnum @default(PENDENT) @map("status")
+  approved     Boolean          @default(false) @map("approved")
 
-  active                Boolean               @default(true)
-  updatedAt             DateTime              @updatedAt
-  deletedAt             DateTime?
+  active                Boolean               @default(true) @map("active")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+  deletedAt             DateTime?             @map("deleted_at")
   budgetStatusHistories BudgetStatusHistory[]
   budgetItems           BudgetItem[]
   budgetPayments        BudgetPayment[]
@@ -312,88 +331,90 @@ model Budget {
 }
 
 model BudgetStatusHistory {
-  id        String           @id @default(cuid())
+  id        String           @id @default(cuid()) @map("id")
   company   Company          @relation(fields: [companyId], references: [id])
-  companyId String
+  companyId String           @map("company_id")
   budget    Budget           @relation(fields: [budgetId], references: [id])
-  budgetId  String
-  statusOld BudgetStatusEnum @default(PENDENT)
-  status    BudgetStatusEnum @default(PENDENT)
+  budgetId  String           @map("budget_id")
+  statusOld BudgetStatusEnum @default(PENDENT) @map("status_old")
+  status    BudgetStatusEnum @default(PENDENT) @map("status")
   user      User             @relation(fields: [userId], references: [id])
-  userId    String
+  userId    String           @map("user_id")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
   @@map("budget_status_histories")
 }
 
 model BudgetItem {
-  id           String   @id @default(uuid())
+  id           String   @id @default(cuid()) @map("id")
   company      Company  @relation(fields: [companyId], references: [id])
-  companyId    String
+  companyId    String   @map("company_id")
   budget       Budget   @relation(fields: [budgetId], references: [id])
-  budgetId     String
-  serviceName  String
-  serviceValue Float
-  suggestValue Float    @default(0)
-  referenceId  String?
+  budgetId     String   @map("budget_id")
+  serviceName  String   @map("service_name")
+  serviceValue Float    @map("service_value")
+  suggestValue Float    @default(0) @map("suggest_value")
+  referenceId  String?  @map("reference_id")
   reference    Service? @relation(fields: [referenceId], references: [id])
-  name         String
-  value        Float
-  removed      Boolean  @default(false)
+  name         String   @map("name")
+  value        Float    @map("value")
+  removed      Boolean  @default(false) @map("removed")
 
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  active    Boolean   @default(true) @map("active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
   @@map("budget_items")
 }
 
 model BudgetPayment {
-  id           String            @id @default(cuid())
+  id           String            @id @default(cuid()) @map("id")
   company      Company           @relation(fields: [companyId], references: [id])
-  companyId    String
+  companyId    String            @map("company_id")
   budget       Budget            @relation(fields: [budgetId], references: [id])
-  budgetId     String
-  amount       Float
-  method       PaymentMethodEnum @default(OTHER)
-  externalId   String?
-  externalMeta String?
-  forCustomer  Boolean           @default(false)
+  budgetId     String            @map("budget_id")
+  amount       Float             @map("amount")
+  method       PaymentMethodEnum @default(OTHER) @map("method")
+  externalId   String?           @map("external_id")
+  externalMeta String?           @map("external_meta")
+  forCustomer  Boolean           @default(false) @map("for_customer")
   user         User?             @relation(fields: [userId], references: [id])
-  userId       String?
-  active       Boolean           @default(true)
-  createdAt    DateTime          @default(now())
-  updatedAt    DateTime          @updatedAt
-  deletedAt    DateTime?
+  userId       String?           @map("user_id")
+  active       Boolean           @default(true) @map("active")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+  deletedAt    DateTime?         @map("deleted_at")
+
+  @@map("budget_payments")
 }
 
 // Modelo de Recibos emitidos
 model Receipt {
-  id            String            @id @default(cuid())
+  id            String            @id @default(cuid()) @map("id")
   company       Company           @relation(fields: [companyId], references: [id])
-  companyId     String
-  code          Int
+  companyId     String            @map("company_id")
+  code          Int               @map("code")
   budget        Budget?           @relation(fields: [budgetId], references: [id])
-  budgetId      String?
-  recipientName String
-  document      String
-  receiptType   ReceiptEnum       @default(IN) // Tipos: IN, OUT
-  valueExtense  String
-  description   String
-  reverse       Boolean           @default(false)
-  paymentMethod PaymentMethodEnum @default(OTHER) // Métodos: PIX_OFFLINE, PIX_ONLINE, CARD_DEBIT, CARD_CREDIT, CARD_LINK, MONEY, OTHER
-  value         Float             @default(0) // Valor do recibo
+  budgetId      String?           @map("budget_id")
+  recipientName String            @map("recipient_name")
+  document      String            @map("document")
+  receiptType   ReceiptEnum       @default(IN) @map("receipt_type")
+  valueExtense  String            @map("value_extense")
+  description   String            @map("description")
+  reverse       Boolean           @default(false) @map("reverse")
+  paymentMethod PaymentMethodEnum @default(OTHER) @map("payment_method")
+  value         Float             @default(0) @map("value")
   user          User              @relation(fields: [userId], references: [id])
-  userId        String
-  active        Boolean           @default(true)
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  deletedAt     DateTime          @default(now())
+  userId        String            @map("user_id")
+  active        Boolean           @default(true) @map("active")
+  createdAt     DateTime          @default(now()) @map("created_at")
+  updatedAt     DateTime          @updatedAt @map("updated_at")
+  deletedAt     DateTime?         @map("deleted_at")
 
   @@map("receipts")
 }

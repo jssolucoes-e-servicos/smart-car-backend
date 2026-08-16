@@ -6,11 +6,20 @@ import { UpdateCompanyDto } from '../dto/update-company.dto';
 import { CompanyEntity } from 'src/common/entities';
 import { IdParamDto } from 'src/common/dto/id.param.dto';
 import { ProtectedRoute } from 'src/common/decorators/routes/protected-route.decorator';
+import { PublicRoute } from 'src/common/decorators/routes/public-route.decorator';
 
 @ApiTags('Empresas (Oficinas)')
 @Controller('companies')
 export class CompaniesController {
   constructor(private readonly companiesService: CompaniesService) {}
+
+  @PublicRoute('GET', 'cnpj/:cnpj', {
+    summary: 'Busca dados de uma empresa ativa pelo CNPJ (Rota Pública)',
+    responseType: CompanyEntity,
+  })
+  async findByCnpj(@Param('cnpj') cnpj: string): Promise<CompanyEntity> {
+    return this.companiesService.findByCnpj(cnpj);
+  }
 
   @ProtectedRoute('GET', '', {
     summary: 'Lista todas as empresas ativas',

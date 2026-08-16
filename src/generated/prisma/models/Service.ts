@@ -282,6 +282,7 @@ export type ServiceOrderByWithRelationInput = {
 
 export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  companyId_code?: Prisma.ServiceCompanyIdCodeCompoundUniqueInput
   AND?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   OR?: Prisma.ServiceWhereInput[]
   NOT?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
@@ -296,7 +297,7 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"Service"> | Date | string | null
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   budgetItems?: Prisma.BudgetItemListRelationFilter
-}, "id">
+}, "id" | "companyId_code">
 
 export type ServiceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -440,6 +441,11 @@ export type ServiceOrderByRelevanceInput = {
   fields: Prisma.ServiceOrderByRelevanceFieldEnum | Prisma.ServiceOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
   search: string
+}
+
+export type ServiceCompanyIdCodeCompoundUniqueInput = {
+  companyId: string
+  code: number
 }
 
 export type ServiceCountOrderByAggregateInput = {

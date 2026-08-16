@@ -88,4 +88,23 @@ export class CompaniesService {
       data: { active: false, deletedAt: new Date() },
     });
   }
+
+  async findByCnpj(cnpj: string): Promise<CompanyEntity> {
+    const cleanCnpj = cnpj.replace(/\D/g, '');
+    const company = await this.prisma.company.findFirst({
+      where: {
+        cnpj: {
+          contains: cleanCnpj,
+        },
+        active: true,
+        deletedAt: null,
+      },
+    });
+
+    if (!company) {
+      throw new NotFoundException(`Empresa com CNPJ '${cnpj}' não foi localizada ou está inativa.`);
+    }
+
+    return new CompanyEntity(company as unknown as Partial<CompanyEntity>);
+  }
 }

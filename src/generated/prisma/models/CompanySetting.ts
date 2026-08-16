@@ -43,7 +43,7 @@ export type CompanySettingMinAggregateOutputType = {
   mercadoPagoMode: string | null
   mercadoPagoEmail: string | null
   pixKey: string | null
-  usingEMAIL: boolean | null
+  usingEmail: boolean | null
   emailHost: string | null
   emailUser: string | null
   emailPassword: string | null
@@ -63,7 +63,7 @@ export type CompanySettingMaxAggregateOutputType = {
   mercadoPagoMode: string | null
   mercadoPagoEmail: string | null
   pixKey: string | null
-  usingEMAIL: boolean | null
+  usingEmail: boolean | null
   emailHost: string | null
   emailUser: string | null
   emailPassword: string | null
@@ -83,7 +83,7 @@ export type CompanySettingCountAggregateOutputType = {
   mercadoPagoMode: number
   mercadoPagoEmail: number
   pixKey: number
-  usingEMAIL: number
+  usingEmail: number
   emailHost: number
   emailUser: number
   emailPassword: number
@@ -113,7 +113,7 @@ export type CompanySettingMinAggregateInputType = {
   mercadoPagoMode?: true
   mercadoPagoEmail?: true
   pixKey?: true
-  usingEMAIL?: true
+  usingEmail?: true
   emailHost?: true
   emailUser?: true
   emailPassword?: true
@@ -133,7 +133,7 @@ export type CompanySettingMaxAggregateInputType = {
   mercadoPagoMode?: true
   mercadoPagoEmail?: true
   pixKey?: true
-  usingEMAIL?: true
+  usingEmail?: true
   emailHost?: true
   emailUser?: true
   emailPassword?: true
@@ -153,7 +153,7 @@ export type CompanySettingCountAggregateInputType = {
   mercadoPagoMode?: true
   mercadoPagoEmail?: true
   pixKey?: true
-  usingEMAIL?: true
+  usingEmail?: true
   emailHost?: true
   emailUser?: true
   emailPassword?: true
@@ -260,7 +260,7 @@ export type CompanySettingGroupByOutputType = {
   mercadoPagoMode: string
   mercadoPagoEmail: string | null
   pixKey: string | null
-  usingEMAIL: boolean
+  usingEmail: boolean
   emailHost: string | null
   emailUser: string | null
   emailPassword: string | null
@@ -303,7 +303,7 @@ export type CompanySettingWhereInput = {
   mercadoPagoMode?: Prisma.StringFilter<"CompanySetting"> | string
   mercadoPagoEmail?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   pixKey?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
-  usingEMAIL?: Prisma.BoolFilter<"CompanySetting"> | boolean
+  usingEmail?: Prisma.BoolFilter<"CompanySetting"> | boolean
   emailHost?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailUser?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailPassword?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
@@ -324,7 +324,7 @@ export type CompanySettingOrderByWithRelationInput = {
   mercadoPagoMode?: Prisma.SortOrder
   mercadoPagoEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   pixKey?: Prisma.SortOrderInput | Prisma.SortOrder
-  usingEMAIL?: Prisma.SortOrder
+  usingEmail?: Prisma.SortOrder
   emailHost?: Prisma.SortOrderInput | Prisma.SortOrder
   emailUser?: Prisma.SortOrderInput | Prisma.SortOrder
   emailPassword?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -349,7 +349,7 @@ export type CompanySettingWhereUniqueInput = Prisma.AtLeast<{
   mercadoPagoMode?: Prisma.StringFilter<"CompanySetting"> | string
   mercadoPagoEmail?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   pixKey?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
-  usingEMAIL?: Prisma.BoolFilter<"CompanySetting"> | boolean
+  usingEmail?: Prisma.BoolFilter<"CompanySetting"> | boolean
   emailHost?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailUser?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailPassword?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
@@ -370,7 +370,7 @@ export type CompanySettingOrderByWithAggregationInput = {
   mercadoPagoMode?: Prisma.SortOrder
   mercadoPagoEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   pixKey?: Prisma.SortOrderInput | Prisma.SortOrder
-  usingEMAIL?: Prisma.SortOrder
+  usingEmail?: Prisma.SortOrder
   emailHost?: Prisma.SortOrderInput | Prisma.SortOrder
   emailUser?: Prisma.SortOrderInput | Prisma.SortOrder
   emailPassword?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -398,7 +398,7 @@ export type CompanySettingScalarWhereWithAggregatesInput = {
   mercadoPagoMode?: Prisma.StringWithAggregatesFilter<"CompanySetting"> | string
   mercadoPagoEmail?: Prisma.StringNullableWithAggregatesFilter<"CompanySetting"> | string | null
   pixKey?: Prisma.StringNullableWithAggregatesFilter<"CompanySetting"> | string | null
-  usingEMAIL?: Prisma.BoolWithAggregatesFilter<"CompanySetting"> | boolean
+  usingEmail?: Prisma.BoolWithAggregatesFilter<"CompanySetting"> | boolean
   emailHost?: Prisma.StringNullableWithAggregatesFilter<"CompanySetting"> | string | null
   emailUser?: Prisma.StringNullableWithAggregatesFilter<"CompanySetting"> | string | null
   emailPassword?: Prisma.StringNullableWithAggregatesFilter<"CompanySetting"> | string | null
@@ -417,7 +417,7 @@ export type CompanySettingCreateInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -438,7 +438,7 @@ export type CompanySettingUncheckedCreateInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -457,7 +457,7 @@ export type CompanySettingUpdateInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -478,7 +478,7 @@ export type CompanySettingUncheckedUpdateInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -498,7 +498,7 @@ export type CompanySettingCreateManyInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -517,7 +517,7 @@ export type CompanySettingUpdateManyMutationInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -537,7 +537,7 @@ export type CompanySettingUncheckedUpdateManyInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -573,7 +573,7 @@ export type CompanySettingCountOrderByAggregateInput = {
   mercadoPagoMode?: Prisma.SortOrder
   mercadoPagoEmail?: Prisma.SortOrder
   pixKey?: Prisma.SortOrder
-  usingEMAIL?: Prisma.SortOrder
+  usingEmail?: Prisma.SortOrder
   emailHost?: Prisma.SortOrder
   emailUser?: Prisma.SortOrder
   emailPassword?: Prisma.SortOrder
@@ -597,7 +597,7 @@ export type CompanySettingMaxOrderByAggregateInput = {
   mercadoPagoMode?: Prisma.SortOrder
   mercadoPagoEmail?: Prisma.SortOrder
   pixKey?: Prisma.SortOrder
-  usingEMAIL?: Prisma.SortOrder
+  usingEmail?: Prisma.SortOrder
   emailHost?: Prisma.SortOrder
   emailUser?: Prisma.SortOrder
   emailPassword?: Prisma.SortOrder
@@ -617,7 +617,7 @@ export type CompanySettingMinOrderByAggregateInput = {
   mercadoPagoMode?: Prisma.SortOrder
   mercadoPagoEmail?: Prisma.SortOrder
   pixKey?: Prisma.SortOrder
-  usingEMAIL?: Prisma.SortOrder
+  usingEmail?: Prisma.SortOrder
   emailHost?: Prisma.SortOrder
   emailUser?: Prisma.SortOrder
   emailPassword?: Prisma.SortOrder
@@ -690,7 +690,7 @@ export type CompanySettingCreateWithoutCompanyInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -709,7 +709,7 @@ export type CompanySettingUncheckedCreateWithoutCompanyInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -758,7 +758,7 @@ export type CompanySettingScalarWhereInput = {
   mercadoPagoMode?: Prisma.StringFilter<"CompanySetting"> | string
   mercadoPagoEmail?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   pixKey?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
-  usingEMAIL?: Prisma.BoolFilter<"CompanySetting"> | boolean
+  usingEmail?: Prisma.BoolFilter<"CompanySetting"> | boolean
   emailHost?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailUser?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
   emailPassword?: Prisma.StringNullableFilter<"CompanySetting"> | string | null
@@ -777,7 +777,7 @@ export type CompanySettingCreateManyCompanyInput = {
   mercadoPagoMode?: string
   mercadoPagoEmail?: string | null
   pixKey?: string | null
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: string | null
   emailUser?: string | null
   emailPassword?: string | null
@@ -796,7 +796,7 @@ export type CompanySettingUpdateWithoutCompanyInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -815,7 +815,7 @@ export type CompanySettingUncheckedUpdateWithoutCompanyInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -834,7 +834,7 @@ export type CompanySettingUncheckedUpdateManyWithoutCompanyInput = {
   mercadoPagoMode?: Prisma.StringFieldUpdateOperationsInput | string
   mercadoPagoEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pixKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usingEMAIL?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  usingEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailHost?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailUser?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -856,7 +856,7 @@ export type CompanySettingSelect<ExtArgs extends runtime.Types.Extensions.Intern
   mercadoPagoMode?: boolean
   mercadoPagoEmail?: boolean
   pixKey?: boolean
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: boolean
   emailUser?: boolean
   emailPassword?: boolean
@@ -877,7 +877,7 @@ export type CompanySettingSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   mercadoPagoMode?: boolean
   mercadoPagoEmail?: boolean
   pixKey?: boolean
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: boolean
   emailUser?: boolean
   emailPassword?: boolean
@@ -898,7 +898,7 @@ export type CompanySettingSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   mercadoPagoMode?: boolean
   mercadoPagoEmail?: boolean
   pixKey?: boolean
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: boolean
   emailUser?: boolean
   emailPassword?: boolean
@@ -919,7 +919,7 @@ export type CompanySettingSelectScalar = {
   mercadoPagoMode?: boolean
   mercadoPagoEmail?: boolean
   pixKey?: boolean
-  usingEMAIL?: boolean
+  usingEmail?: boolean
   emailHost?: boolean
   emailUser?: boolean
   emailPassword?: boolean
@@ -930,7 +930,7 @@ export type CompanySettingSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CompanySettingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "themeColor" | "mercadoPagoKey" | "mercadoPagoToken" | "mercadoPagoMode" | "mercadoPagoEmail" | "pixKey" | "usingEMAIL" | "emailHost" | "emailUser" | "emailPassword" | "emailPort" | "active" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["companySetting"]>
+export type CompanySettingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "themeColor" | "mercadoPagoKey" | "mercadoPagoToken" | "mercadoPagoMode" | "mercadoPagoEmail" | "pixKey" | "usingEmail" | "emailHost" | "emailUser" | "emailPassword" | "emailPort" | "active" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["companySetting"]>
 export type CompanySettingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }
@@ -955,7 +955,7 @@ export type $CompanySettingPayload<ExtArgs extends runtime.Types.Extensions.Inte
     mercadoPagoMode: string
     mercadoPagoEmail: string | null
     pixKey: string | null
-    usingEMAIL: boolean
+    usingEmail: boolean
     emailHost: string | null
     emailUser: string | null
     emailPassword: string | null
@@ -1396,7 +1396,7 @@ export interface CompanySettingFieldRefs {
   readonly mercadoPagoMode: Prisma.FieldRef<"CompanySetting", 'String'>
   readonly mercadoPagoEmail: Prisma.FieldRef<"CompanySetting", 'String'>
   readonly pixKey: Prisma.FieldRef<"CompanySetting", 'String'>
-  readonly usingEMAIL: Prisma.FieldRef<"CompanySetting", 'Boolean'>
+  readonly usingEmail: Prisma.FieldRef<"CompanySetting", 'Boolean'>
   readonly emailHost: Prisma.FieldRef<"CompanySetting", 'String'>
   readonly emailUser: Prisma.FieldRef<"CompanySetting", 'String'>
   readonly emailPassword: Prisma.FieldRef<"CompanySetting", 'String'>

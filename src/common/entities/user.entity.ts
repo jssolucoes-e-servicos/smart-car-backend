@@ -13,8 +13,11 @@ export class UserEntity {
   @ApiProperty({ example: 'João da Silva' })
   name: string;
 
-  @ApiProperty({ example: 'joao.silva@email.com' })
-  email: string;
+  @ApiProperty({ example: 'joao.silva@email.com', required: false })
+  email?: string;
+
+  @ApiProperty({ example: 'admin' })
+  username: string;
 
   @ApiProperty({ example: true })
   active: boolean;
@@ -27,5 +30,6 @@ export class UserEntity {
 
   constructor(partial: Partial<UserEntity>) {
     Object.assign(this, partial);
+    delete (this as any).password;
   }
 }

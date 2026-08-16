@@ -1576,7 +1576,7 @@ export const CompanySettingScalarFieldEnum = {
   mercadoPagoMode: 'mercadoPagoMode',
   mercadoPagoEmail: 'mercadoPagoEmail',
   pixKey: 'pixKey',
-  usingEMAIL: 'usingEMAIL',
+  usingEmail: 'usingEmail',
   emailHost: 'emailHost',
   emailUser: 'emailUser',
   emailPassword: 'emailPassword',
@@ -1596,11 +1596,13 @@ export const UserScalarFieldEnum = {
   code: 'code',
   name: 'name',
   email: 'email',
+  username: 'username',
   password: 'password',
   active: 'active',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  role: 'role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1704,6 +1706,7 @@ export const BudgetScalarFieldEnum = {
   status: 'status',
   approved: 'approved',
   active: 'active',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 } as const
@@ -1879,6 +1882,7 @@ export const UserOrderByRelevanceFieldEnum = {
   companyId: 'companyId',
   name: 'name',
   email: 'email',
+  username: 'username',
   password: 'password'
 } as const
 
@@ -2063,6 +2067,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RoleEnum'
+ */
+export type EnumRoleEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleEnum'>
+    
+
+
+/**
+ * Reference to a field of type 'RoleEnum[]'
+ */
+export type ListEnumRoleEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleEnum[]'>
     
 
 

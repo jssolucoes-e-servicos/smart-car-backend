@@ -13,7 +13,19 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: { sub: string; email: string }) {
+  async validate(payload: { sub: string; email: string; isManager?: boolean }) {
+    if (payload.isManager) {
+      const manager = await this.prisma.manager.findFirst({
+        where: { id: payload.sub, deletedAt: null },
+      });
+
+      if (!manager) {
+        throw new UnauthorizedException('Acesso negado: Gerente não localizado ou inativo.');
+      }
+
+      return { sub: manager.id, email: manager.email, name: manager.name, isManager: true };
+    }
+
     const user = await this.prisma.user.findFirst({
       where: { id: payload.sub, deletedAt: null },
     });
